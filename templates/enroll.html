@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Tuyển sinh{% endblock title %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+   <h3 class=" text-center text-muted">Tuyển sinh</h3>
+</div>
+
+
+
+
+
+ <div class="enroll-content">
+    <div class="image-card text-center mt-8">
+       <div class="row">
+
+                <div class="col-lg-4  card-3-view col-12 mb-13">   
+                      <div class="icon-feature d-flex flex-column h-100 ">
+                         <figure class="d-flex align-items-baseline my-0 mx-auto flex-column">     
+                            <img src="{% static "image/mbg.png" %}" class="img-fluid rounded-start height="100" width="250" " alt="..." >
+                            
+                         </figure>
+                         <div>
+                            <h3 class=" h5 mt-4 mb-0" role="heading">
+                               Cơ sở học tập hiện đại</h3>
+                               <p class="text-dark-charcoal mt-4 mx-5 mb-0">Đại học TNUT có nhiều trang thiết bị hiện đại và tiên tiến</p>
+                         </div>
+                            <div class="cta-wpr  mx-auto">
+                               <div class="mb-0 d-flex">
+                                  <a href="{% url "environment" %}" class="iconfeature-cta pt-4 pb-0" data-analytics-type="iconfeature" data-analytics-value="Cơ sở học tập toàn cầu" aria-label="Khám phá những cơ sở của RMIT - Cơ sở học tập toàn cầu">
+                                     Khám phá những cơ sở của TNUT
+                                     <svg class="ms-1" width="10px" height="10px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                              <polygon fill="#E60028" fill-rule="nonzero" points="3.55215636 -1.44773082e-13 2.5 1.06125 7.39717442 6 2.5 10.9395 3.55215636 12 9.5 6.00075">
+                                              </polygon>
+                                           </g>
+                                        </svg>
+                                  </a>
+                               </div>
+                            </div>  
+                      </div>
+                </div>
+ 
+          
+                <div class="col-lg-4  card-3-view col-12 mb-13">   
+                    <div class="icon-feature d-flex flex-column h-100 ">
+                       <figure class="d-flex align-items-baseline my-0 mx-auto flex-column">     
+                          <img src="{% static "image/hat.png" %}" class="img-fluid rounded-start height="100" width="250" " alt="..." >
+                       </figure>
+                       <div>
+                          <h3 class=" h5 mt-4 mb-0" role="heading">
+                            96% sinh viên TNUT có việc làm sau thời gian khi tốt nghiệp</h3>
+                             <p class="text-dark-charcoal mt-4 mx-5 mb-0">Tuyển dụng liên tục</p>
+                       </div>
+                          <div class="cta-wpr  mx-auto">
+                             <div class="mb-0 d-flex">
+                                <a href="{% url "job" %}" class="iconfeature-cta pt-4 pb-0" data-analytics-type="iconfeature" data-analytics-value="Cơ sở học tập toàn cầu" aria-label="Khám phá những cơ sở của RMIT - Cơ sở học tập toàn cầu">
+                                   Khám phá những cơ hội việc làm 
+                                   
+                                      <svg class="ms-1" width="10px" height="10px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <polygon fill="#E60028" fill-rule="nonzero" points="3.55215636 -1.44773082e-13 2.5 1.06125 7.39717442 6 2.5 10.9395 3.55215636 12 9.5 6.00075">
+                                            </polygon>
+                                         </g>
+                                      </svg>
+                                </a>
+                             </div>
+                          </div>  
+                    </div>
+              </div>
+
+              <div class="col-lg-4  card-3-view col-12 mb-13">   
+                <div class="icon-feature d-flex flex-column h-100 ">
+                    <br>
+                   <figure class="d-flex align-items-baseline my-0 mx-auto flex-column">      
+                      <img src="{% static "image/newbook.png" %}" class="img-fluid rounded-start height="100" width="250" " alt="..." >
+                   </figure>
+                   <br>
+                   
+                   <div>
+                      <h3 class=" h5 mt-4 mb-0" role="heading">
+                         Đội ngũ cán bộ giảng viên</h3>
+                         <p class="text-dark-charcoal mt-4 mx-5 mb-0">Thầy cô nhiệt huyết, tận tình. Bạn bè thân thiện, hòa đồng</p>
+                   </div>
+                      <div class="cta-wpr  mx-auto">
+                         <div class="mb-0 d-flex">
+                            <a href="#" class="iconfeature-cta pt-4 pb-0" data-analytics-type="iconfeature" data-analytics-value="Cơ sở học tập toàn cầu" aria-label="Khám phá những cơ sở của RMIT - Cơ sở học tập toàn cầu">
+                               Chi tiết cán bộ ĐTVT
+                               
+                                  <svg class="ms-1" width="10px" height="10px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <polygon fill="#E60028" fill-rule="nonzero" points="3.55215636 -1.44773082e-13 2.5 1.06125 7.39717442 6 2.5 10.9395 3.55215636 12 9.5 6.00075">
+                                        </polygon>
+                                     </g>
+                                  </svg>
+                            </a>
+                         </div>
+                      </div>  
+                </div>
+          </div>
+ 
+          
+       </div>
+    </div>
+ </div>
+
+
+
+
+ <div class="mt-5">
+    <h3 class="text-center ">
+        Hoạt động
+    </h3>
+    <div class="row g-0">
+        <div class="col-md-5 mx-5">
+            Cuộc thi nữ sinh ĐTVT
+            <hr>
+            <iframe width="360" height="115" src="https://www.youtube.com/embed/AGq2ZWfkkjI?si=wlu10EjzRwg_HbPR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+{% endblock content %}

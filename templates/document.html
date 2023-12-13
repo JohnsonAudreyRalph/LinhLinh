@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Tài liệu DTVT{% endblock title %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+    <h3 class=" text-center text-muted">Tài liệu tham khảo </h3>
+ </div>
+ <div class="mx-5 mt-5" style="background-color:aliceblue">
+    <p><i class="fa-solid fa-hand-peace"></i>Note</p>
+    <p><i class="fa-solid fa-heart"></i>Kho tài liệu ĐTVT đa dạng, cung cấp đầy đủ giáo trình bộ môn, tài liệu tham khảo</p>
+    <p>Hãy đăng ký tài khoản, trở thành thành viên ĐTVT để có thể download những tài liệu hữu ích nhé!
+    <a href="{% url "register" %}" > <i class="fa-solid fa-user"></i> Đăng ký tại đây</a> </p>
+ </div>
+<div class="d-flex justify-content-center mb-5 mt-5">
+    <div class="card col-md-11">
+        {% comment %} <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Thêm mới
+          </button> {% endcomment %}
+        <table class="table table-bordered">
+            <thead>
+              <tr class="text-center">
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for Doc in Doc %}
+                <tr class="text-center">
+                    <td>
+                        <div style="width: 40%;">
+                            <img src="{% static 'image/' %}{{ Doc.image }}" style="width: 100%;">                         
+                        </div>
+                    </td>
+                    <td class="align-middle" style="width: 30%;">{{Doc.name}}</td>
+                    <td class="align-middle" style="width: 15%;">{{Doc.name_author}}</td>
+                    <td class="align-middle">
+                        <div class="d-flex justify-content-around">
+                             {% comment %} <a href="{% url "download_document" pk=Doc.pk %}" class="btn btn-primary btn-sm ">
+                                <i class="fa-solid fa-download"></i>
+                            </a>  {% endcomment %}
+                            {% if user == Doc.author %}
+                            <form action="{% url "Delete_doc" Doc.id %}" method="post">
+                               {% csrf_token %} 
+                                <button class="btn btn-danger btn-sm " type='submit'>
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                            {% endif %}
+                                
+
+                             {% if user.is_authenticated %}
+                                <form action="{% url "download_document" Doc.pk %}" method="post">
+                                    {% csrf_token %} 
+                                    <button class="btn btn-primary btn-sm " type='submit'>
+                                        <i class="fa-solid fa-download"></i>
+                                    </button>
+                                </form>
+                            {% endif %} 
+                            
+                        </div>
+                    </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table> 
+    </div>
+</div>
+<div class="container-fluid mt-5 mb-5">
+    <h3 class=" text-center text-muted">Bản đọc trước </h3>
+ </div>
+<img src='https://online.pubhtml5.com/kvage/dcnp/files/shot.jpg' data-rel='fh5-light-box-demo' data-href='https://online.pubhtml5.com/kvage/dcnp/' data-width='900' data-height='500' data-title='Thi nghiem chuyen nganh WSH417'>
+   <img src='https://online.pubhtml5.com/kvage/okzk/files/shot.jpg' data-rel='fh5-light-box-demo' data-href='https://online.pubhtml5.com/kvage/okzk/' data-width='900' data-height='500' data-title='Ky thuat truyen dan so'>
+<div class="container-fluid mt-5 mb-5">
+    <h3 class=" text-center text-muted">Video hữu ích </h3>
+ </div>
+    <div class="row g-0">
+        <div class="col-md-5 mx-5">
+            Hướng dẫn đăng ký nguyện vọng
+            <hr>
+            <iframe width="360" height="200" src="https://www.youtube.com/embed/kS-35OxpIO0?si=ZAu_hU-tUHtHNKTP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="col-md-5 mt-5 mx-5">
+            <iframe width="360" height="200" src="https://www.youtube.com/embed/2Q5OV3enT6w?si=Nu_VP0CUyqVqND5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <hr>
+            Bổ trợ kiến thức
+        </div>
+
+        <div class="col-md-5 mx-5">
+            Nguồn điện trong HTVT
+            <hr>
+            <iframe width="360" height="200" src="https://www.youtube.com/embed/bIercOAQagw?si=H3rNFILsrthv4VLu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="col-md-5 mt-5 mx-5">
+            <iframe width="360" height="200" src="https://www.youtube.com/embed/_92xD8W034U?si=_3L5iH2w7AIyap9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <hr>
+            Khóa học CCNA
+        </div>
+    </div>
+ </div>
+{% endblock content %}

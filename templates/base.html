@@ -1,0 +1,258 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% comment %} <script src="{% static 'js/script.js' %}"></script> {% endcomment %}
+    {% comment %} <script src="{% static 'js/script.js' %}"></script> {% endcomment %}
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src='//pubhtml5.com/plugin/LightBox/js/pubhtml5-light-box-api-min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    {% block head %}{% endblock head %}
+</head>
+<body>
+    <div class="nav justify-content-center mt-3 me-5" >
+        <a class="navbar-brand mx-3" href="#">
+            <img src= "{% static 'image/DTVT_TNUT-removebg-preview.png' %} " alt="" width="200" height="100">
+        </a>
+
+        <li class="nav-item mt-3  ">
+            <a class="nav-link text-black"  href="{% url "home" %}">Trang chủ</a>
+        </li>
+
+        <li class="nav-item dropdown  mt-3">
+            <a class="nav-link dropdown-toggle text-black" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Danh sách
+            </a>
+            <ul class="dropdown-menu text-black">
+                <li>
+                    <a class="dropdown-item " href="{% url "K55DVT" %}">K55DVT</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% url "K56DVT" %}">K56DVT</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">K57DVT</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item dropdown mt-3 ">
+            <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tiện ích
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href=" {% url "tree" %} ">Cây tiến trình</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% url "document" %}">Tài liệu học tập</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% url "job" %}">Cơ hội việc làm</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item dropdown mt-3 ">
+            <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tin tức
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="{% url "enroll" %}">Tuyển sinh</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% url "tech" %}">Khoa học công nghệ</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% url "new" %}">Hoạt động ngoại khóa</a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li class="nav-item mt-3">
+            <a class="nav-link text-black" href="{% url "Post" %}">Thảo luận</a> 
+        </li>
+
+        <li class="nav-item mt-3 ">
+            <a class="nav-link text-black" href="{% url "contact" %}">Liên hệ</a>
+        </li>
+
+        <li class="nav-item mt-3 ">
+            <a class="nav-link text-black" href="{% url "logout" %}">
+            {% if user.is_authenticated %}
+                <h5 class="px-2">{{user.username}}</h5>
+            {% endif %} </a>
+        </li>
+        
+        <li class="nav-item mt-3 mx-3 ">
+            <a class="nav-link text-black" href="{% url "login" %}"><i class="fa-solid fa-user"></i></a>
+        </li>        
+    </div>
+    
+
+    {% block content %}{% endblock content %}
+
+    <footer class="text-center text-lg-start bg-white text-muted">
+        <div class="container text-center text-md-start mt-5 mx-5 " style="background-color:#999999;">
+            <div class="row mt-3">
+                <div class="col-md-2 col-lg-2 col-xl-3 mx-auto mb-4 mt-3">
+                    <img src={% static 'image/Logo Khoa FEE_2020 (xanh sam)_Vi.png' %} alt="logo" height="70" width="70">
+                    <h6 class=" list-footer text-uppercase fw-bold mb-4 text-center ">
+                        KHOA ĐIỆN TỬ
+                    </h6>
+                    <p>
+                        <a href="" class="text-decoration-none list-item">  
+                            <i class="fa-solid fa-house"></i>                      
+                            Trường Đại học Kỹ thuật Công nghiệp Thái Nguyên 
+                        </a>
+                    </p>
+                    <p>
+                        <a href="" class="text-decoration-none list-item">          
+                            <i class="fa-solid fa-envelope"></i>
+                            Fee@tnut.edu.vn 
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-md-3 col-lg-3 col-xl-2-5 mx-auto mb-4 mt-3">
+                    <h6 class="list-footer text-uppercase fw-bold mb-4">
+                        Thông tin liên quan
+                    </h6>
+                    <p>
+                        <a href="{% url "environment" %}" class="text-decoration-none list-item" href="#">
+                            Môi trường học tập
+                        </a>
+                    </p>
+                    <p>
+                        <a href="{% url "hocbong" %}" class="text-decoration-none list-item" href="#">
+                            Học bổng
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 mt-3">
+                    <h6 class="list-footer text-uppercase fw-bold mb-4">
+                        Xem thêm
+                    </h6>
+                    <p>
+                        <a href="https://www.facebook.com/KyThuatDienTuVienThongTnut" href="" class="text-decoration-none list-item">
+                            <i class=" fa-brands fa-facebook"></i>
+                            Facebook
+                        </href=>
+                    </p>
+                    <p>
+                        <a href="https://dientuvienthongtnut.com/" class="text-decoration-none list-item">
+                            <i class="fa-brands fa-square-instagram"></i>
+                            Instagram
+                        </a>
+                    </p>
+                    <p>
+                        <a href="" class="text-decoration-none list-item">
+                            <i class="fa-brands fa-tiktok"></i>
+                            Tiktok
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://www.youtube.com/@bomonientuvienthong-khoaie5803" class="text-decoration-none list-item">
+                            <i class="fa-brands fa-youtube"></i>
+                            Youtube
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-md-2 col-lg-2 col-xl-3 mx-auto mb-4 mt-3">
+                    <h6 class=" list-footer text-uppercase fw-bold mb-4">
+                        Google Map
+                    </h6>
+                    <p>
+                        <a href="" class="footer-item-link">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.9449161096213!2d105.84269551537759!3d21.54900907518878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313521406ca0840d%3A0x40cb6f8d2cad2168!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBL4bu5IFRodeG6rXQgQ8O0bmcgTmdoaeG7h3A!5e0!3m2!1svi!2s!4v1657681263775!5m2!1svi!2s" width="230" height="150" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+<div id="backtop">
+    <i class="fa-solid fa-arrow-up"></i>
+</div>
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+            © 2023 Copyright:
+            <span class="text-reset fw-bold">LINHLINH</span>. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+ <script>
+    $(document).ready(function(){
+        const showHiddenPass = (loginPass, loginEye) => {
+            const input = document.getElementById(loginPass),
+            iconEye = document.getElementById(loginEye);
+          
+            iconEye.addEventListener('click', () => {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    
+                    iconEye.classList.add('ri-eye-line');
+                    iconEye.classList.remove('ri-eye-off-line');
+                }
+                else {
+                    input.type = 'password';
+                    iconEye.classList.remove('ri-eye-line');
+                    iconEye.classList.add('ri-eye-off-line');
+                }
+            });
+        };
+    
+        showHiddenPass('login-pass', 'login-eye');
+    });
+    
+    
+    $(document).ready(function() {
+        $(window).scroll(function() {
+            if($(this).scrollTop()) {
+               $('#backtop').fadeIn(); 
+            } else{
+                $('#backtop').fadeOut();
+            }
+        });
+        $("#backtop").click(function() {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 500);
+        });
+    }); 
+    
+    
+    let fall = document.getElementById('fall');
+    let count = 50;
+    for(var d = 0; d<50; d++){
+        let leftSnow = Math.floor(Math.random() * fall.clientWidth);
+        let topSnow = Math.floor(Math.random() * fall.clientHeight);
+        let widthSnow = Math.floor(Math.random() * 50);
+        let timeSnow = Math.floor((Math.random() * 5) + 5);
+        let blurSnow = Math.floor(Math.random() * 5);
+        console.log(leftSnow);
+        let div = document.createElement('div');
+        div.classList.add('snow');
+        div.style.left = leftSnow + 'px';
+        div.style.top = topSnow + 'px';
+        div.style.width = widthSnow + 'px';
+        div.style.height = widthSnow + 'px';
+        div.style.animationDuration = timeSnow + 's';
+        div.style.filter = "blur(" + blurSnow + "px)";
+        fall.appendChild(div);
+    }
+   
+    
+</script> 
+</html>

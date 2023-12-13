@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Thảo luận{% endblock title %}
+
+{% block content %}
+
+{% comment %} <div id="fall">
+   <div class="snow"></div>
+</div> {% endcomment %}
+<hr>
+<div class="container-fluid mt-5">
+   <h3 class=" text-center text-muted">Góc ĐTVTer</h3>
+   <div class="mx-5 mt-5" style="background-color:aliceblue">
+      <p><i class="fa-solid fa-hand-peace"></i>Note</p>
+      <p><i class="fa-solid fa-heart"></i>Sự tham gia số lượng lớn sinh viên, cựu sinh viên - trang cộng đồng ĐTVTer đã dần khẳng định sự quan trọng của mình :))</p>
+      <p>Hãy đăng ký tài khoản,  trở thành thành viên ĐTVT, có thể cùng nhau trao đổi thông tin hữu ích nhé!
+      <a href="{% url "register" %}" > <i class="fa-solid fa-user"></i> Đăng ký tại đây</a> </p>
+   </div>
+</div>
+{% if user.is_authenticated %}
+<div id="button" class="d-grid gap-2 d-md-flex justify-content-md-end mx-5">
+   <button type="button" class="btn btn-outline-primary  mt-3 mx-5">
+       <a href="{% url "creat_post" %}" class="creat">Đăng bài </a>
+   </button>
+</div>
+{% endif %}
+{% for post_all in All_Post %}
+   <div class="d-flex justify-content-center mb-5 mt-5">
+      <div class="card col-md-11">
+         <div class="row g-0"> 
+               <div class="col-md-4 justify-content-center d-flex">
+                  <img src="{% static 'image/' %}{{ post_all.image }}" class="img-fluid rounded-start" alt="...">                          
+               </div>
+               <div class="col-md-8">
+                  <div class="card-body">
+                     <div class="d-flex justify-content-between">
+                           <h5 class="card-title">{{post_all.title}}</h5>
+                           {% if user == post_all.author %}
+                           <form action="{% url "Delete_post" post_all.id %}" method="post">
+                              {% csrf_token %}
+                              <button class="btn btn-danger btn-sm " type="submit">
+                                 <i class="fa-solid fa-trash"></i>
+                              </button>
+                           </form>
+
+                           {% endif %}
+                     </div>
+                     <hr>
+                     <p class="card-text">{{post_all.description}}</p>
+                  </div>
+               </div>
+         </div>
+         <p class="card-text">{{post_all.create_at}}</p>
+         <p class="card-text">{{post_all.author}}</p>
+      </div>
+   </div>
+
+{% endfor %}
+
+{% endblock content %}

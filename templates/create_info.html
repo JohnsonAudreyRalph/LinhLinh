@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Thêm thông tin{% endblock title %}
+
+{% block content %}
+<h4 class="alert alert-success text-center container-fluid"  role="alert" >
+    Thêm thông tin sinh viên
+</h4>
+
+
+<div class="card mx-5 mt-5">
+    <div class="card-body">
+        <form class="row g-3" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-2">
+                <label class="form-label">Upload ảnh</label>
+                <input type="file" class="form-control" name="image" required="">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Họ và tên</label>
+                <input type="text" class="form-control" name="name" required="">
+            </div>
+
+            <div class="col-md-1">
+                <label class="form-label">Tuổi</label>
+                <input type="number" class="form-control" name="age" required="">
+            </div>
+            <div class="col-md-1">
+                <label class="form-label">Giới tính</label>
+                <select class="form-select" aria-label="Disabled select example" name="gender">
+                    {% comment %} <option selected>Nam</option> {% endcomment %}
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                    <option value="Khác">Khác</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Quốc gia</label>
+                <select class="countries form-select" name="countries" id="countries"></select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Mã số sinh viên</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="MSSV" required="">
+                </div>
+            </div>
+            <div class="col-md-1">
+                <label class="form-label">Lớp</label>
+                <input type="text" class="form-control" required="" name="Class">
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Căn cước công dân</label>
+                <input type="number" class="form-control" required="" name="cccd">
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Số điện thoại</label>
+                <input type="number" class="form-control" required="" name="sdt">
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" required="" name="email">
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Ngày sinh</label>
+                <input type="date" class="form-control" required="" name="date">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Địa chỉ</label>
+                <textarea class="form-control" required="" style="height: 50px" name="address"></textarea>
+            </div>
+           
+            
+            <div class="col-12 justify-content-center">
+                <button class="btn btn-primary" type="submit">Lưu</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const xhttp = new XMLHttpRequest();
+    const select = document.getElementById("countries");
+    const flag = document.getElementById("flag");
+
+    let countries;
+
+    xhttp.onreadystatechange = function() {
+
+        if (this.readyState == 4 && this.status == 200) {
+            countries = JSON.parse(xhttp.responseText);
+            assignValues();
+            handleCountryChange();
+        }
+    };
+    xhttp.open("GET", "https://restcountries.com/v3.1/all", true);
+    xhttp.send();
+
+    function assignValues() {
+        countries.forEach(country => {
+            const option = document.createElement("option");
+            
+            option.value = country.name.common;
+            option.textContent = country.name.common;
+            select.appendChild(option);
+        });
+    }
+
+    function handleCountryChange() {
+        const countryData = countries.find(
+            country => select.value === country.alpha2Code
+        );
+        
+    }
+
+    select.addEventListener("change", handleCountryChange.bind(this));
+</script>
+{% endblock content %}

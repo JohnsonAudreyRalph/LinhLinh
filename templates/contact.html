@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Liên hệ{% endblock title %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+   <h3 class=" text-center text-muted">Thông tin liên hệ</h3>
+</div>
+
+<div class="row align-items-center mb-2 mt-5 text-muted">
+   <div class="col-lg-12">
+       <div class="address">
+           <div class="row">
+               <div class="col-md-9 mx-5">
+                   <div class=" ">
+                       <div class="h5 my-3 ">Bộ môn Kỹ thuật Điện tử viễn thông - Trường Đại học Kỹ Thuật Công Nghiệp Thái Nguyên</div>
+                       <address>
+                           <div class="mb-2"><i class="me-2 fa-solid fa-house"></i> Địa chỉ: Phòng 512, Nhà thí nghiệm, Số 666 Đường 3-2, P.Tích Lương, TP Thái Nguyên</div>
+                           <div class="mb-2"> <i class="me-2 fa-solid fa-envelope"></i>Email:  <a href="mailto:office@tnut.edu.vn">office@tnut.edu.vn</a> </div>
+                           <div class="mb-2"><i class="me-2 fa-solid fa-phone"></i>Điện thoại:  (84)2083847145   |   Fax: (84)2083847403</div>
+                           <div class="mb-2"><i class="me-2 fa-solid fa-location-dot"></i>Website: https://tnut.edu.vn</div>
+                       </address>
+                   </div>
+
+
+               </div>
+               {% comment %} <div class="col-md-3">
+                   <div class="rounded ">
+                       <div class="mb-1 mt-5 h6 fw-bold">Liên hệ tư vấn tuyển sinh</div>
+                       <div>
+                           <address>
+                               <div class="mb-2"><i class=" fal fa-map-marker-alt text-primary"></i>Showroom cổng chính - trường Đại học Kỹ thuật Công nghiệp</div>
+                               <div class="mb-2"><i class="me-2 fal fa-envelope-open text-primary"></i>Email:  <a href="mailto:tuyensinh@tnut.edu.vn">tuyensinh@tnut.edu.vn</a> </div>
+
+                               <div class="mb-2"><i class="me-2 fal fa-phone-volume text-primary"></i>Điện thoại:  <a href="tel:02083847359">02083847359</a>    |   <a href="tel:0912847588">0912847588</a></div>
+                           </address>
+                       </div>
+
+                   </div> {% endcomment %}
+
+               </div>
+           </div>
+       </div>
+   </div>
+
+
+</div>
+
+<div class="card-body contact">
+   <form action="#" method="post">
+      {% csrf_token %}
+      <div class="row gy-4 mt-5 mx-5">
+         <div class="col-md-6"> <input type="text" name="name" class="form-control" placeholder="Your Name" required=""></div>
+         <div class="col-md-6 "> <input type="email" class="form-control" name="email" placeholder="Your Email" required=""></div>
+         <div class="col-md-12"> <input type="text" class="form-control" name="subject" placeholder="Subject" required=""></div>
+         <div class="col-md-12"><textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea></div>
+         <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Send message</button>
+         </div>
+      </div>
+   </form>
+</div>
+{% endblock content %}

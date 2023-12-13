@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Khoa học công nghệ{% endblock title %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+   <h3 class=" text-center text-muted">Nghiên cứu khoa học công nghệ</h3>
+</div>
+   <div class="d-flex justify-content-center mb-5 mt-5">
+      <div class="card col-md-11">
+         <div class="row g-0"> 
+               <div class="col-md-4 justify-content-center d-flex">
+                  <img src="{% static 'image/hoithao.png' %}" class="img-fluid rounded-start" alt="...">                          
+               </div>
+               <div class="col-md-8">
+                  <div class="card-body">
+                     <div class="d-flex justify-content-between">
+                           <h5 class="card-title">Hội thảo FEE</h5>
+                     </div>
+                     <hr>
+                     <p class="card-text">Tại bộ môn Điện tử viễn thông đã diễn ra hội thảo với chủ đề ...</p>
+                     <p class="card-text">Với sự có mặt của tất cả các giảng viên bộ môn ...</p>
+                     <p class="card-text">Hội thảo đã diễn ra tốt đẹp ...</p>
+                  </div>
+               </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="d-flex justify-content-center mb-5 mt-5">
+    <div class="card col-md-11">
+       <div class="row g-0"> 
+             <div class="col-md-8">
+                <div class="card-body">
+                   <div class="d-flex justify-content-between">
+                         <h5 class="card-title">Sáng tạo sinh viên ĐTVT</h5>
+                   </div>
+                   <hr>
+                   <p class="card-text">Với sự nỗ lực hết sức mình, đội STvt đã giành giải ba cuộc thi sáng tạo sinh viên cấp trường</p>
+                </div>
+             </div>
+             <div class="col-md-4 justify-content-center d-flex">
+                <img src="{% static 'image/stsv.jpg' %}" class="img-fluid rounded-start" alt="...">                          
+             </div>
+       </div>
+    </div>
+ </div>
+
+ <div class="d-flex justify-content-center mb-5 mt-5">
+    <div class="card col-md-11">
+       <div class="row g-0"> 
+             <div class="col-md-4 justify-content-center d-flex">
+                <img src="{% static 'image/stsv_at.jpg' %}" class="img-fluid rounded-start" alt="...">                          
+             </div>
+             <div class="col-md-8">
+                <div class="card-body">
+                   <div class="d-flex justify-content-between">
+                         <h5 class="card-title">Nghiên cứu Anten</h5>
+                   </div>
+                   <hr>
+                   <p class="card-text">Môn học không sinh viên ĐTVT nào không biết</p>
+                </div>
+             </div>
+       </div>
+    </div>
+ </div>
+
+ 
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ngoại khóa{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid mt-5">
+   <h3 class=" text-center text-muted">Hoạt động ngoại khóa</h3>
+</div>
+{% for News in All_New %}
+<div class="d-flex justify-content-center mb-5 mt-5 " >
+   <div class="card col-md-11">
+      <div class="row g-0"> 
+            <div class="col-md-4 justify-content-center "style="width: 30%;">
+               <img src="{% static 'image/' %}{{ News.image }}" style="width: 100%;">                          
+            </div>
+            <div class="col-md-8">
+               <div class="card-body">
+                  <h5 class="card-title">{{News.title}}</h5>
+                  <hr>
+                  <p class="card-text">{{News.description}}</p>
+               </div>
+            </div>
+      </div>
+      <p class="card-text">{{News.create_at}}</p>
+      <p class="card-text">{{News.author}}</p>
+   </div>
+</div>
+{% endfor %}
+
+
+{% endblock content %}

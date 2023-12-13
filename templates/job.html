@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Việc làm{% endblock title %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+   <h3 class=" text-center text-muted">Việc làm</h3>
+</div>
+
+
+ {% for job_all in All_job %}
+   <div class="d-flex justify-content-center mb-5 mt-5">
+      <div class="card col-md-11">
+         <div class="row g-0"> 
+               <div class="col-md-4 justify-content-center d-flex">
+                  <img src="{% static 'image/' %}{{ job_all.image }}" class="img-fluid rounded-start" alt="...">                          
+               </div>
+               <div class="col-md-8">
+                  <div class="card-body">
+                     <div class="d-flex justify-content-between">
+                           <h5 class="card-title">{{job_all.title}}</h5>
+                           {% if user == job_all.author %}
+                           <form action="{% url "Delete_post" job_all.id %}" method="post">
+                              {% csrf_token %}
+                              <button class="btn btn-danger btn-sm " type="submit">
+                                 <i class="fa-solid fa-trash"></i>
+                              </button>
+                           </form>
+
+                           {% endif %}
+                     </div>
+                     <hr>
+                     <p class="card-text">{{job_all.description|safe}}</p>
+                  </div>
+               </div>
+         </div>
+         <p class="card-text">{{job_all.create_at}}</p>
+         <p class="card-text">{{job_all.author}}</p>
+      </div>
+   </div>
+
+{% endfor %}
+{% endblock content %}

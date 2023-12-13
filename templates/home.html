@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Trang chủ{% endblock title %}
+
+{% block content %}
+<div id="wrapper">
+   <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+       <div class="carousel-inner">
+       <div class="carousel-item active">
+           <img src="{% static "image/11.PNG" %}"  height="200" width="1273" alt="...">
+       </div>
+       <div class="carousel-item">
+           <img src="{% static "image/2.PNG" %}" height="200" width="1273" alt="...">
+       </div>
+       <div class="carousel-item">
+           <img src="{% static "image/33.PNG" %}" height="200" width="1273" alt="...">
+       </div>
+       </div>
+       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+       <span class="visually-hidden">Previous</span>
+       </button>
+       <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+       <span class="visually-hidden">Next</span>
+       </button>
+   </div>
+
+
+    <div class="row mt-5 mx-4">
+        <div class="col-lg-10">
+           <div class="card">
+              <div class="card-body ">
+                <h5 >GIỚI THIỆU</h5>
+                <p>
+                    Viễn thông (Telecommunication) là một thuật ngữ liên quan tới việc truyền thông tin và tín hiệu. Ngành Điện tử Viễn thông là ngành sử dụng những công nghệ tiên tiến để tạo nên các thiết bị giúp cho việc truy suất thông tin mà cá nhân hoặc tổ chức muốn có. Có thể nói lĩnh vực viễn thông đã làm thay đổi bộ mặt của thế giới, đã hiện thực hóa khả năng liên kết của mỗi người của mỗi quốc gia, gắn kết mọi người với nhau nhờ một mạng lưới viễn thông toàn cầu. Bước chân vào ngành này, bạn có thể trở thành nhà nghiên cứu, sáng tạo các công nghệ mới, thiết bị Điện tử Viễn thông mới hay làm việc trong lĩnh vực mạng, viễn thông, lĩnh vực định vị dẫn đường, lĩnh vực điện tử y sinh, lĩnh vực âm thanh, hình ảnh...
+               <br>
+                  Cơ hội việc làm: Với chương trình đào tạo tiên tiến và mục tiêu đảm bảo sự liên thông, khi tốt nghiệp Kỹ sư Điện tử -Viễn thông sẽ làm việc tại các Sở, Ban, Ngành về viễn thông, các công ty sản xuất, nghiên cứu và phát triển các sản phẩm điện tử, các nhà cung cấp dịch vụ Internet, các công ty viễn thông truyền số liệu, các công ty điện thoại di động, các công ty truyền tin qua hệ thống vệ tinh, các công ty tư vấn giải pháp và kinh doanh các dịch vụ Điện tử Viễn thông, lĩnh vực truyền thanh – truyền hình; Công ty truyền hình cáp; Lĩnh vực hàng không; Các nhà cung cấp dịch vụ viễn thông.  
+              </div>
+           </div>
+        </div>
+        <div class="col-lg-2">
+         <div class="card">
+             <div class="card-body">
+               <h5>XEM THÊM</h5> 
+               <a href="{% url "object" %}"><h6>Bạn là ai?</h6></a>
+               <a href="{% url "K55DVT" %}"><h6>Giảng viên</h6></a>
+               <a href="{% url "Post" %}"><h6>Cựu sinh viên</h6></a>
+               <a href="{% url "tech" %}"><h6>Sinh viên</h6></a>
+               {% comment %} <a href="{% url "object" %}"><h6></h6></a> {% endcomment %}
+               <a href="document" ><h6>Giáo trình</h6></a>
+             </div>
+               
+          </div>
+        </div>
+    </div>
+
+    <div id="fall" style="height: 500px; width: 970px;" class="mx-5 mt-5">
+      <h1 class="text-white">Marry Chrismas 2023</h1>
+      <div class="snow"></div>
+   </div>   
+   
+
+   
+       
+    
+    <h4 class=" text-center text-muted mt-5">TIN NỔI BẬT</h4>
+    <div class="card mt-5 mx-5 mb-5">
+        <div class="row g-0">
+           <div class="col-md-4"> <img src="{% static "image/antten.png" %}" class="img-fluid rounded-start  height="100" width="250" " alt="..."></div>
+           <div class="col-md-8">
+              <div class="card-body">
+                 <h5 class="card-title">Mục tiêu chung</h5>
+                 <p class="card-text">Chương trình đào tạo ngành Kỹ thuật điện tử - viễn thông là đào tạo các cử nhân/kỹ sư theo định hướng ứng dụng. <br>
+                  Người học sau khi tốt nghiệp có kiến thức, kỹ năng về chuyên môn và xã hội đáp ứng được yêu cầu của công việc thuộc lĩnh vực Điện tử, Viễn thông và Công nghệ thông tin.<br>
+                  </p>
+              </div>
+           </div>
+        </div>
+     </div>
+     <div class="card mt-5 mx-5 mb-5">
+        <div class="row g-0">
+           <div class="col-md-4"> <img src="{% static "image/DTVT.png" %}" class="img-fluid rounded-start height="100" width="250"" alt="..."></div>
+           <div class="col-md-8">
+              <div class="card-body">
+                 <h5 class="card-title">Năng lực</h5>
+                 <p class="card-text">Nhận thức, đánh giá được vai trò và trách nhiệm của người kỹ sư Kỹ thuật Điện tử - Viễn thông trong bối cảnh xã hội ảnh hưởng đến các hoạt động của ngành Điện tử - Viễn thông - Công nghệ thông tin và bối cảnh toàn cầu hoá. <br>
+                  Vận dụng các kiến thức, kỹ năng và thái độ để lãnh đạo trong kỹ thuật.</p>
+              </div>
+           </div>
+        </div>
+     </div>
+   
+     <div class="card mt-5 mx-5 mb-5">
+      <div class="row g-0">
+         <div class="col-md-4"> <img src="{% static "image/tuyensinh.PNG" %}" class="img-fluid rounded-start height="100" width="250" " alt="..." ></div>
+         <div class="col-md-8">
+            <div class="card-body">
+               <h5 class="card-title">Kỹ năng</h5>
+               <p class="card-text">Có khả năng làm việc độc lập và làm việc nhóm, khả năng lãnh đạo, quản lý, điều hành. <br>
+                Thành thạo giao tiếp qua văn bản, giao tiếp điện tử/ đa truyền thông, biết cách thuyết trình, báo cáo ý tưởng trong hoạt động kỹ thuật và trong giao tiếp.<br>
+                Đọc hiểu và vận dụng các tài liệu tiếng Anh chuyên ngành.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+
+</div>
+{% endblock content %}
+

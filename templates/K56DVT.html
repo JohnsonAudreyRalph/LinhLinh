@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Danh sách K56{% endblock title %}
+{% block head %}
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script> 
+{% endblock head %}
+{% block content %}
+<div class="container-fluid mt-5">
+    <h3 class=" text-center text-muted">Danh sách sinh viên K56 Điện tử viễn thông</h3>
+</div>
+<div class="container-fluid mt-5">
+    <table id="example" class="table table-hover" style="width:100%">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Ảnh đại diện</th>
+                <th>Thông tin cơ bản</th>
+                <th>Giới tính</th>
+                <th>Học tập</th>
+                <th>Ngoại khóa</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sh in ds %}
+            <tr style="text-normal">
+                <td class="pt-5">{{forloop.counter}}</td>
+                <td style="width: 20%; ">
+                    <img src="{% static 'image/' %}{{ sh.image }}" alt="" style="width: 100%;">
+                </td>
+                <td class="pt-5" style="width: 20%;">{{sh.name|safe}}</td>
+                <td class="pt-5" style="width: 10%;">{{sh.gender}}</td>
+                <td class="pt-5" style="width: 25%;">{{sh.study|safe}}</td>
+                <td class="pt-5" style="width: 30%;">{{sh.act|safe}}</td>
+                <td class="pt-5">
+                     
+                    {% if user == sh.author %}
+                    <form action="{% url "Update_56" sh.id %}" method="post" class='d-inline'>
+                        {% csrf_token %}
+                        <button type='button' class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#edit-{{sh.id}}">
+                         <i class="fa-regular fa-pen-to-square"></i>
+                         </button>
+                     </form>
+                    <form action="{% url "Delete_56" sh.id %}" method="post" class='d-inline'>
+                       {% csrf_token %}
+                       <button class="btn btn-danger btn-sm " type='submit'>
+                          <i class="fa-solid fa-trash"></i>
+                       </button>
+                    </form>
+                    {% endif %} 
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% for x in ds %}
+    <form action="/Update_56/{{x.id}}" method="post" enctype="multipart/form-data">
+        <div class="modal fade" id="edit-{{x.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            {% csrf_token %}
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa thông tin</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Upload ảnh</label>
+                        <input type="file" class="form-control" name="edit_image" required="">
+                        <label>Thông tin cơ bản</label>
+                        <input name="edit_name" value="{{x.name|safe}}" type="text" class="form-control" required>
+                        <label>Giới tính</label>
+                        <select class="form-control" aria-label="Disabled select example" name="edit_gender">
+                            <option selected >---------</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                        <label>Học tập</label>
+                        <input name="edit_study" value="{{x.study|safe}}" type="text" class="form-control" required>
+                        <label>Ngoại khóa</label>
+                        <input name="edit_act" value="{{x.act|safe}}" type="text" class="form-control" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endfor %}
+<script>
+    new DataTable('#example'); 
+ </script>
+{% endblock content %}
