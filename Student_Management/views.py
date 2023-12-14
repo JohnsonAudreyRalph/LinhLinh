@@ -33,10 +33,10 @@ class Login(View):
                     User.objects.get(username=username)
                     # Nếu người dùng có tồn tại, nhưng mật khẩu sai ==> Reload lại trang web để người dùng đăng nhập lại
                     messages.error(request, "Sai thông tin đăng nhập!!!!")
-                    return redirect('/')
+                    return redirect('/login')
                 except User.DoesNotExist:
                     messages.error(request, "Không tồn tại tài khoản này")
-                    return redirect('/')
+                    return redirect('/login')
                 
 class Register(View):
     def get(self, request):
@@ -59,7 +59,7 @@ class Register(View):
             MyUser = User.objects.create_user(Username, Email, Password)
             print(Username, Email, Password)
             MyUser.save()
-            return redirect('/')
+            return redirect('/login')
         return render(request, 'register.html')
     
 def Logout(request):
@@ -98,7 +98,7 @@ class document(View):
     def get(self, request):
         Show_doc = Model_File.objects.all()
         return render(request, 'document.html', {'Doc':Show_doc})
-    
+
 
 class download_document(View):
     def get(self, request, pk):
@@ -109,8 +109,6 @@ class download_document(View):
         response['Content-Disposition'] = f'attachment; filename="{file_model.file.name}"' # Lấy tệp tin tải xuống, đặt tên cho tệp tin tải xuống là tên của file đó
         return response # Điều này thực hiện báo cho trình duyệt người dùng tải xuống
 
-# def enrollment(request):
-#     return render(request, 'enrollment.html')
 def Post(request):
     All_Post = Model_Post.objects.all()
     return render(request, 'Post.html', {'All_Post':All_Post})
@@ -128,6 +126,8 @@ def job(request):
 
 def tree(request):
     return render(request, 'tree.html')
+def teacher(request):
+    return render(request, 'teacher.html')
 
 def hocbong(request):
     return render(request, 'hocbong.html')
@@ -177,36 +177,30 @@ def Delete_post(request, id):
 
 def Update(request, id):
     if request.method == "POST":
-        print("kjdhkashd")
         edit_name = request.POST.get('edit_name')
         edit_image = request.FILES.get('edit_image')
         edit_gender = request.POST.get('edit_gender')
         edit_study = request.POST.get('edit_study')
         edit_act = request.POST.get('edit_act')
         author = request.user
-        print(f"Dữ liệu của name: {edit_name}, dữ liệu của image {edit_image}, dữ liệu của gender {edit_gender}, dữ liệu của study {edit_study}, dữ liệu của act {edit_act}")
-        if edit_name and edit_image and edit_gender and edit_study and edit_act:
-            save = Student(id=id, name=edit_name, image=edit_image, gender=edit_gender, study=edit_study, act=edit_act, author=author)
+        if edit_name and edit_image and edit_gender and edit_study and edit_act and author:
+            save = Student(id=id, name=edit_name, author=author, image=edit_image, gender=edit_gender, study=edit_study, act=edit_act)
             save.save()
-            return redirect('/K55DVT')
+            return redirect('K55DVT')
         students = Student.objects.all()
     return render(request, 'K55DVT.html', {'students':students})
-
 def Update_56(request, id):
     if request.method == "POST":
-        print("Dữ liệu K56")
         edit_name = request.POST.get('edit_name')
         edit_image = request.FILES.get('edit_image')
         edit_gender = request.POST.get('edit_gender')
         edit_study = request.POST.get('edit_study')
         edit_act = request.POST.get('edit_act')
         author = request.user
-        if edit_name and edit_image and edit_gender and edit_study and edit_act:
-            print("Lấy thành công")
-            save_56 = Student_K56(id=id, name=edit_name, image=edit_image, gender=edit_gender, study=edit_study, act=edit_act, author=author)
+        if edit_name and edit_image and edit_gender and edit_study and edit_act and author:
+            save_56 = Student_K56(id=id, name=edit_name, image=edit_image, author=author, gender=edit_gender, study=edit_study, act=edit_act)
             save_56.save()
-            print("Lưu thành công")
-            return redirect('/K56DVT')
+            return redirect('K56DVT')
         ds = Student_K56.objects.all()
     return render(request, 'K56DVT.html', {'ds':ds})
 

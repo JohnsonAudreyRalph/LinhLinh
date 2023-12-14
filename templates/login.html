@@ -24,12 +24,20 @@
                         <label for="UserName" class="form__label">User name</label>
                     </div>
                 </div>
-                <div class="form__box">
+                {% comment %} <div class="form__box">
                     <i class="ri-lock-2-line form__icon"></i>
                     <div class="form__box-input">
                         <input for="password" type="password" class="form__input" placeholder=" " id="login-pass" name="Password"/>
                         <label for="password" class="form__label">Password</label>
                         <i class="ri-eye-off-line form__eye" id="login-eye"></i>
+                    </div>
+                </div> {% endcomment %}
+
+                <div class="form__box">
+                    <i class="ri-lock-2-line form__icon"></i>
+                    <div class="form__box-input">
+                        <input for="Password" type="password" class="form__input" placeholder=" " id="login-pass" name="Password"/>
+                        <label for="Password" class="form__label">Password</label>
                     </div>
                 </div>
             </div>
